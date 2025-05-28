@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نصوص مترجمة</title>
+  <style>
+    body { font-family: "Arial", sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; color: #333; }
+    header { background-color: #007bff; color: white; padding: 1rem; text-align: center; font-size: 1.5rem; }
+    .container { display: flex; flex-direction: row; padding: 2rem; gap: 2rem; justify-content: center; }
+    .text-block { width: 45%; background-color: white; padding: 1rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); line-height: 1.8; }
+    .arabic { direction: rtl; text-align: right; }
+    .french { direction: ltr; text-align: left; }
+    @media (max-width: 768px) { .container { flex-direction: column; } .text-block { width: 100%; } }
+  </style>
+</head>
+<body>
+  <header>نصوص مترجمة: العربية - الفرنسية</header>
+  <div class="container">
+    <div class="text-block arabic">
+      <h2>النص العربي</h2>
+      <p>كان يا ما كان، في قديم الزمان، كان هناك طفل صغير يعيش في قرية هادئة...</p>
+    </div>
+    <div class="text-block french">
+      <h2>Texte Français</h2>
+      <p>Il était une fois, dans un village tranquille, un petit garçon vivait paisiblement...</p>
+    </div>
+  </div>
+</body>
+</html>
