@@ -2,28 +2,168 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>نصوص مترجمة</title>
+  <title>نصوص مترجمة: العربية - الفرنسية</title>
   <style>
-    body { font-family: "Arial", sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; color: #333; }
-    header { background-color: #007bff; color: white; padding: 1rem; text-align: center; font-size: 1.5rem; }
-    .container { display: flex; flex-direction: row; padding: 2rem; gap: 2rem; justify-content: center; }
-    .text-block { width: 45%; background-color: white; padding: 1rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); line-height: 1.8; }
-    .arabic { direction: rtl; text-align: right; }
-    .french { direction: ltr; text-align: left; }
-    @media (max-width: 768px) { .container { flex-direction: column; } .text-block { width: 100%; } }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      color: #333;
+    }
+
+    nav {
+      background-color: #007bff;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    nav select, nav input, nav button {
+      margin: 0.5rem;
+      padding: 0.4rem;
+      border-radius: 5px;
+      border: none;
+    }
+
+    header {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding: 2rem;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .text-block {
+      width: 45%;
+      background-color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      line-height: 1.8;
+      overflow-y: auto;
+      max-height: 400px;
+    }
+
+    .arabic {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .french {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .actions {
+      text-align: center;
+      margin: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .text-block {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>نصوص مترجمة: العربية - الفرنسية</header>
-  <div class="container">
-    <div class="text-block arabic">
-      <h2>النص العربي</h2>
-      <p>كان يا ما كان، في قديم الزمان، كان هناك طفل صغير يعيش في قرية هادئة...</p>
-    </div>
-    <div class="text-block french">
-      <h2>Texte Français</h2>
-      <p>Il était une fois, dans un village tranquille, un petit garçon vivait paisiblement...</p>
-    </div>
+
+<!-- شريط التنقل -->
+<nav>
+  <h1>نصوص مترجمة</h1>
+  <div>
+    <select id="textSelector">
+      <option value="1">النص 1: قصة قصيرة</option>
+      <option value="2">النص 2: مقال ثقافي</option>
+    </select>
+
+    <input type="text" id="searchInput" placeholder="ابحث في النص...">
+    
+    <button onclick="toggleDirection()">🔁 تبديل العرض</button>
+    <button onclick="downloadPDF()">📄 تحميل PDF</button>
   </div>
+</nav>
+
+<!-- العنوان والوصف -->
+<header>
+  <p class="description">مشروع يعرض نصوصًا مترجمة بين العربية والفرنسية لأغراض تعليمية وثقافية.</p>
+</header>
+
+<!-- عرض النصوص -->
+<div class="container" id="textContainer">
+  <div class="text-block arabic" id="arabicText">
+    <h2>النص العربي</h2>
+    <p>كان يا ما كان، في قديم الزمان، كان هناك طفل صغير يعيش في قرية هادئة...</p>
+  </div>
+  <div class="text-block french" id="frenchText">
+    <h2>Texte Français</h2>
+    <p>Il était une fois, dans un village tranquille, un petit garçon vivait paisiblement...</p>
+  </div>
+</div>
+
+<!-- تحميل PDF -->
+<div class="actions">
+  <p>جميع الحقوق محفوظة © 2025</p>
+</div>
+
+<script>
+  function toggleDirection() {
+    const container = document.getElementById("textContainer");
+    container.insertBefore(container.lastElementChild, container.firstElementChild);
+  }
+
+  function downloadPDF() {
+    alert("لأسباب تقنية، يجب استخدام أداة خارجية لتحويل HTML إلى PDF (مثل Print > Save as PDF).");
+  }
+
+  // مثال بسيط لتغيير النصوص حسب القائمة
+  document.getElementById('textSelector').addEventListener('change', function () {
+    const ar = document.getElementById('arabicText');
+    const fr = document.getElementById('frenchText');
+    if (this.value === "2") {
+      ar.querySelector("p").textContent = "الثقافة تشكل جوهر الهوية، وهي تعبير عن تاريخ الشعوب وحضاراتها.";
+      fr.querySelector("p").textContent = "La culture est au cœur de l'identité, elle exprime l'histoire et la civilisation des peuples.";
+    } else {
+      ar.querySelector("p").textContent = "كان يا ما كان، في قديم الزمان، كان هناك طفل صغير يعيش في قرية هادئة...";
+      fr.querySelector("p").textContent = "Il était une fois, dans un village tranquille, un petit garçon vivait paisiblement...";
+    }
+  });
+
+  // البحث في النص
+  document.getElementById("searchInput").addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    ['arabicText', 'frenchText'].forEach(id => {
+      const text = document.getElementById(id);
+      const content = text.querySelector("p").textContent.toLowerCase();
+      if (!content.includes(query)) {
+        text.style.display = "none";
+      } else {
+        text.style.display = "block";
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
