@@ -127,43 +127,5 @@
   <p>جميع الحقوق محفوظة © 2025</p>
 </div>
 
-<script>
-  function toggleDirection() {
-    const container = document.getElementById("textContainer");
-    container.insertBefore(container.lastElementChild, container.firstElementChild);
-  }
-
-  function downloadPDF() {
-    alert("لأسباب تقنية، يجب استخدام أداة خارجية لتحويل HTML إلى PDF (مثل Print > Save as PDF).");
-  }
-
-  // مثال بسيط لتغيير النصوص حسب القائمة
-  document.getElementById('textSelector').addEventListener('change', function () {
-    const ar = document.getElementById('arabicText');
-    const fr = document.getElementById('frenchText');
-    if (this.value === "2") {
-      ar.querySelector("p").textContent = "الثقافة تشكل جوهر الهوية، وهي تعبير عن تاريخ الشعوب وحضاراتها.";
-      fr.querySelector("p").textContent = "La culture est au cœur de l'identité, elle exprime l'histoire et la civilisation des peuples.";
-    } else {
-      ar.querySelector("p").textContent = "كان يا ما كان، في قديم الزمان، كان هناك طفل صغير يعيش في قرية هادئة...";
-      fr.querySelector("p").textContent = "Il était une fois, dans un village tranquille, un petit garçon vivait paisiblement...";
-    }
-  });
-
-  // البحث في النص
-  document.getElementById("searchInput").addEventListener("input", function () {
-    const query = this.value.toLowerCase();
-    ['arabicText', 'frenchText'].forEach(id => {
-      const text = document.getElementById(id);
-      const content = text.querySelector("p").textContent.toLowerCase();
-      if (!content.includes(query)) {
-        text.style.display = "none";
-      } else {
-        text.style.display = "block";
-      }
-    });
-  });
-</script>
-
 </body>
 </html>
